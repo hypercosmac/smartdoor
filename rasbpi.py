@@ -6,7 +6,7 @@ GPIO.setup(5,GPIO.OUT)
 true = 1
 while(true):
                 try:
-                        response = urllib2.urlopen('http://192.168.1.8/xampp/IOTautomation/buttonStatus.php')
+                        response = urllib2.urlopen('http://smartdoor/buttonStatus.php')
                         status = response.read()
                 except urllib2.HTTPError, e:
                                         print e.code
@@ -15,8 +15,10 @@ while(true):
                                         print e.args
 
                 print status
-                if status=='ON':
-                                GPIO.output(5,True)
-                elif status=='OFF':
-                                GPIO.output(5,False)
+                if status=='1':
+                                GPIO.output(5,True) #Signal to arduino to open door
+                elif status=='2':
+                        #Take picture and send to mail
+                elif status=='3':
+                        #Send IP address
 
