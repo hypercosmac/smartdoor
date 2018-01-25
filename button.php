@@ -1,10 +1,11 @@
 <?php
 $file = "buttonStatus.txt";
 $handle = fopen($file,'w+');
-if (isset($_POST['1']))
+if (isset($_POST['test']))
 {
 $onstring = "1";
 fwrite($handle,$onstring);
+fwrite($handle,$_POST['test'])
 fclose($handle);
 print "
 ";

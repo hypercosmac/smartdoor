@@ -66,14 +66,44 @@
 	<body style="background:#263238;">
 		<center><h1 style="color: white">Smart Door Control Center</h1></center>
 		<div class="buttons">
-			<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="unlock()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">lock_open</i></button>
-			<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="picture()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">camera_alt</i></button>
-			<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="network()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">network_wifi</i></button>
-
+			<div class="container">
+				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="unlock()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">lock_open</i></button>
+				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="picture()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">camera_alt</i></button>
+				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="network()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">network_wifi</i></button>
+			</div>
 		</div>
 		<div id="unlocked" class="toast">Door Unlocked</div>
 		<div id="camera" class="toast">Photo captured and will be sent to your email</div>
 		<div id="host" class="toast">Stream is available at 192.168.1.12</div>
+
+		<?php
+		$file = "/buttonStatus.txt";
+		$handle = fopen($file,'w+');
+		if (isset($_POST['test']))
+		{
+		$onstring = "1";
+		fwrite($handle,$onstring);
+		fwrite($handle,$_POST['test'])
+		fclose($handle);
+		print "";
+		echo "Hello";
+		}
+		else if(isset($_POST['2']))
+		{
+		$offstring = "2";
+		fwrite($handle, $offstring);
+		fclose($handle);
+		print "";
+		}
+		else if(isset($_POST['3']))
+		{
+		$offstring = "3";
+		fwrite($handle, $offstring);
+		fclose($handle);
+		print "";
+		}
+
+		?>
 		
 		<script>
 			$(document).ready(function(){
