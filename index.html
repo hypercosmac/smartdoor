@@ -2,7 +2,7 @@
 <html>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+	<?php include('button.php') ?>
 	<head>
 		<title>Smart Door</title>
 		<style type="text/css">
@@ -75,35 +75,6 @@
 		<div id="unlocked" class="toast">Door Unlocked</div>
 		<div id="camera" class="toast">Photo captured and will be sent to your email</div>
 		<div id="host" class="toast">Stream is available at 192.168.1.12</div>
-
-		<?php
-		$file = "/buttonStatus.txt";
-		$handle = fopen($file,'w+');
-		if (isset($_POST['test']))
-		{
-		$onstring = "1";
-		fwrite($handle,$onstring);
-		fwrite($handle,$_POST['test'])
-		fclose($handle);
-		print "";
-		echo "Hello";
-		}
-		else if(isset($_POST['2']))
-		{
-		$offstring = "2";
-		fwrite($handle, $offstring);
-		fclose($handle);
-		print "";
-		}
-		else if(isset($_POST['3']))
-		{
-		$offstring = "3";
-		fwrite($handle, $offstring);
-		fclose($handle);
-		print "";
-		}
-
-		?>
 		
 		<script>
 			$(document).ready(function(){

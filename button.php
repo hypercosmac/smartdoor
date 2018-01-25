@@ -1,5 +1,5 @@
 <?php
-$file = "buttonStatus.txt";
+$file = "/buttonStatus.txt";
 $handle = fopen($file,'w+');
 if (isset($_POST['test']))
 {
