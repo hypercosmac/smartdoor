@@ -64,45 +64,23 @@
 	<body style="background:#263238;">
 		<center><h1 style="color: white">Smart Door Control Center</h1></center>
 		<div class="buttons">
-			<div class="container">
+			<div class="container center">
 				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="unlock()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">lock_open</i></button>
 				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="picture()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">camera_alt</i></button>
 				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="network()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">network_wifi</i></button>
+				<button class="w3-button w3-xlarge w3-circle w3-teal w3-card-4" onclick="log()" style="width:300px; height: 300px"><i class="large material-icons" style="font-size: 100px">content_paste</i></button>
 			</div>
 		</div>
 		<div id="unlocked" class="toast">Door Unlocked</div>
 		<div id="camera" class="toast">Photo captured and will be sent to your email</div>
 		<div id="host" class="toast">Stream is available at 192.168.1.12</div>
-
+		<div id="log" class="toast">Your log will be sent to your email</div>
 		<?php
-
-		$file = "/buttonStatus.txt";
-		$handle = fopen($file,'w+');
-		if (isset($_POST['test']))
-		{
-		$onstring = "1";
-		fwrite($handle,$onstring);
-		fwrite($handle,$_POST['test'])
-		fclose($handle);
-		print "";
-		}
-		else if(isset($_POST['2']))
-		{
-		$offstring = "2";
-		fwrite($handle, $offstring);
-		fclose($handle);
-		print "";
-		}
-		else if(isset($_POST['3']))
-		{
-		$offstring = "3";
-		fwrite($handle, $offstring);
-		fclose($handle);
-		print "";
-		}
-
+			$my_file = 'file.txt';
+			$handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+			$data = x;
+			fwrite($handle, $data);
 		?>
-		
 		<script>
 			$(document).ready(function(){
 			    $('.tooltipped').tooltip({delay: 50});
@@ -124,6 +102,13 @@
 			}
 			function network() {
 			    var x = document.getElementById("host")
+			    var y = document.getElementById("camera")
+			    x.className = "show toast";
+			    setTimeout(function(){ y.className = y.className.replace("show toast", "toast"); }, 0);
+			    setTimeout(function(){ x.className = x.className.replace("show toast", "toast"); }, 3000);
+			}
+			function log() {
+			    var x = document.getElementById("log")
 			    var y = document.getElementById("camera")
 			    x.className = "show toast";
 			    setTimeout(function(){ y.className = y.className.replace("show toast", "toast"); }, 0);
